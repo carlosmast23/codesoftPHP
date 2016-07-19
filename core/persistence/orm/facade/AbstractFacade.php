@@ -16,6 +16,11 @@ require_once ESTRUCTURA;
 require_once FACADE."EmpresaUsuarioFacade.php";  
 require_once COLUMNSTABLE;
 
+/**
+ * Implementa metodos generales para las clases que hereden de facade
+ * como son (insert,update,delete)
+ * 
+ */
 abstract class AbstractFacade 
 {
     //variable que me permite utilizar una pila global para hacer las comparaciones al momento de cargar

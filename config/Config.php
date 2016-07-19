@@ -103,14 +103,20 @@ if (strlen($subDir) == 0) {
 // PARA ACCEDER POR EL USUARIO.
 //////////////////////////////////////////////////////////////////////////////////////////
 
-define('CONTROLADOR_ACCION', RAIZ . "resources/controlador/ControladorAccion.php");
-define('CONTROLADOR_SET', RAIZ . "resources/controlador/ControladorSet.php");
-define('CONEXION', RAIZ . "resources/modelo/conexion/Conexion.php");
-define('COLUMNSTABLE', RAIZ . "resources/modelo/conexion/ColumnsTable.php");
-define('ESTRUCTURA', RAIZ . "resources/modelo/conexion/Estructura.php");
-define('COLUMNA', RAIZ . "resources/modelo/conexion/Columna.php");
-define('ABSTRACTDB', RAIZ . "resources/modelo/conexion/AbstractDb.php");
-define('SERVICIOS', RAIZ . "resources/modelo/servicios/");
-define('ENTITY', RAIZ . "resources/modelo/vo/");
-define('FACADE', RAIZ . "resources/modelo/facade/");
-define('IMAGENES', $path . "images/pages/");
+define('CONTROLADOR_ACCION', RAIZ . "core/controller/ControladorAccion.php");
+define('CONTROLADOR_SET', RAIZ . "core/controller/ControladorSet.php");
+define('CONEXION', RAIZ . "core/persistence/connection/Conexion.php");
+define('COLUMNSTABLE', RAIZ . "core/persistence/orm/mapping/ColumnsTable.php");
+define('ESTRUCTURA', RAIZ . "core/persistence/orm/mapping/Estructura.php");
+define('COLUMNA', RAIZ . "core/persistence/orm/mapping/Columna.php");
+define('ABSTRACTDB', RAIZ . "core/persistence/orm/mapping/AbstractDb.php");
+define('SERVICIOS', RAIZ . "modelo/service/");
+define('ENTITY', RAIZ . "modelo/entity/");
+define('FACADE', RAIZ . "modelo/facade/");
+define('IMAGENES', $path . "resources/img/");
+
+//******************************************************
+//NOTA: Si necesita agregar mas rutas relativas las puede
+//declarar al final de las ya establecidad
+//******************************************************
+

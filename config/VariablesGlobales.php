@@ -1,4 +1,7 @@
 <?php
+/**
+ * Define el path absoluto del sitio
+ */
    define('RAIZ',$_SERVER['DOCUMENT_ROOT']."/virtualmall/"); 
   
   // $arPaths[] = RAIZ."/resources";

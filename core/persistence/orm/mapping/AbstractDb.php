@@ -7,11 +7,10 @@
  */
 
 /**
- * Description of AbstractDb
+ * Clase que me permite vincular las clases con una sola estructura
  *
  * @author Carlos
  */
-//clase que me permite vinvular las clases con una sola estructura
 abstract class AbstractDb 
 {
     protected $estructura;

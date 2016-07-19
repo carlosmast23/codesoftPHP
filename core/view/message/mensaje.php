@@ -6,6 +6,10 @@
 <?php
 require_once CONTROLADOR_SET;
 
+/**
+ * Clase que genera una pagina generica para mostrar mensajes
+ * del sitio web.
+ */
 class Controlador extends ControladorSet
 {
     function __construct() 

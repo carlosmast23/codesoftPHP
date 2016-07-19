@@ -7,7 +7,8 @@
  */
 
 /**
- * Description of Estructura
+ * Clase que representa una tabla de la base agrupando las
+ * columnas y sus relaciones.
  *
  * @author Carlos
  */

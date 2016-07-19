@@ -3,36 +3,47 @@
 require_once RAIZ.'Config.php';
 require_once RAIZ.'resources/controlador/ControladorGenerico.php';
 
+/**
+ * Clase que me permite remplazar , renderizar y contralar los
+ * permisos de la pagina
+ * Nota: Esta clase se utiliza cuando tenga que remplazar algun
+ * contenido.
+ */
 abstract class  ControladorSet extends ControladorGenerico
 {
-    //public $mensaje="hola mundo";
-    //variables globales opcioneles para las opciones
-  //  protected static $todos="todos";
-  //  protected static $admin="admin";
-    //protected $conexion;
-  //  protected $configuracion;
     protected $diccionario;
-  //  protected $permisos; //array que almacena los permisos de los usuarios para cada pagina
-    //protected $pagina;
     
+    /**
+     * Busca los valores para remplazar en la vista
+     */
     abstract function buscarValores();
+    /**
+     * Establece un diccionario de datos para
+     * remplazar en la vista
+     */
     abstract function setDiccionario();
+    /**
+     * Establece la pagina la cual se va a remplazar
+     * las variables y renderizar.
+     */
     abstract function getPagina();
   //  abstract function setPermisos();
     
     function __construct() 
     {
-        //$this->pagina=$pagina;
+    
         parent::__construct();
         $this->setDiccionario();
         $this->buscarValores();
         
-        //$this->setPermisos();
-        //$this->configuracion=Config::getInstance();
-        //session_start();
+    
     }
     
-    //realiza el remplazo de las variables
+
+    /**
+     * Remplaza y reconstruye la pagina con los
+     * nuevo valores.
+     */
     public function renderizar()
     {
         
@@ -71,6 +82,15 @@ abstract class  ControladorSet extends ControladorGenerico
         
     }    
     
+    /**
+     * Me permite crear un sistema de etiquetado por nodos para remplazar
+     * de forma secuencial estructural.
+     * 
+     * @param type $html
+     * @param type $nombre
+     * @param type $diccionario
+     * @return type
+     */
     private function remplazarEstructura($html,$nombre,$diccionario)
     {
        // echo $nombre;

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Clase que representa las columnas de la base de datos
+ */
 class Columna {
     /*
      * representa el nombre de la columna en la base de datos

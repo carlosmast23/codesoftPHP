@@ -1,9 +1,12 @@
 <?php
 
+/**
+ * Clase generica que implementa todos los metodos
+ * nesearios para controlar las sessiones
+ */
 abstract class ControladorGenerico {
     
-    // protected $mensaje;
-     //variables globales opcioneles para las opciones
+
      protected static $todos="todos";
      protected static $admin="admin";
     
@@ -11,18 +14,19 @@ abstract class ControladorGenerico {
      protected $permisos; //array que almacena los permisos de los usuarios para cada pagina
      //protected $redireccion; //pagina para redireccionar;
      
-     // function setPermisos(); //ingresar los permisos de loa pagina
-     //abstract function ejecutar(); //funcion que ejecutar las acciones necesarias
-     //abstract function getRedireccion(); //funcion que obtiene la pagina para redireccion
-                  
+                 
      function __construct() 
      {
         $this->setPermisos();
         $this->configuracion=Config::getInstance();
-       // $this->mensaje="hola mundo";
      }
 
      
+     /**
+      * Variable que me permite verficar si se ha iniciado
+      * alguna session
+      * @return boolean
+      */
      protected function verificarSession()
     {
         if(isset($_SESSION["session"]))
@@ -33,7 +37,6 @@ abstract class ControladorGenerico {
                 echo $_SESSION["session"];
                 if($_SESSION["session"]==$valor)
                 {
-                    //echo "encontrado ...";
                     $correcto=true;
                 }
             }
@@ -55,11 +58,18 @@ abstract class ControladorGenerico {
         return false;
     }
     
+    /**
+     * Obtiene la configuracion del sistema
+     * @return type
+     */
     public function getConfiguracion()
     {
         return $this->configuracion;
     }
     
+    /**'
+     * Metodo para redireccionar a una url
+     */
     public  function direccionar($url)
     {
         $direccion = 'Location:';
@@ -68,6 +78,15 @@ abstract class ControladorGenerico {
         header($direccion);
     }
     
+    /**
+     * Metodo que construye los mensajes del sitio web
+     * @param type $titulo
+     * @param type $mensaje
+     * @param string $redireccion
+     * @param type $tiempo
+     * @param type $boton
+     * @param type $imagen
+     */
     public function mensaje($titulo, $mensaje,$redireccion,$tiempo,$boton,$imagen)
     {
         //controlar las imagenes
@@ -93,9 +112,6 @@ abstract class ControladorGenerico {
             $htmlBoton="hidden";            
         }
         
-        //$htmlRedireccion="";
-        
-        //integer
         if(gettype($redireccion)=="boolean")
         {
             $redireccion="";
@@ -110,15 +126,24 @@ abstract class ControladorGenerico {
                 . "&boton=$htmlBoton"
                 . "&img=$htmlImagen"
                 . "&redireccion=$redireccion";
-        //$direccion=  $this->configuracion->$sitename;
         header($direccion);
     }
     
+    /**
+     * Obtiene el path del sitio web
+     * @param type $url
+     * @return type
+     */
     public function getPathAbsoluta($url)
     {
         return $this->configuracion->getSitePath() . $url;
     }
     
+    /**
+     * Metodo que me permite buscar un directorio
+     * dentro del sitio web
+     * @return boolean
+     */
     static public function buscarDirectorio()
     {
         //$path=realpath(dirname(__FILE__));
